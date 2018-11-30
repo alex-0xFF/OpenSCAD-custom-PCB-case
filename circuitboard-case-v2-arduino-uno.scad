@@ -71,26 +71,8 @@ mount_lb=5; // [3:0.5:6]
 mount_holeradius=1.5; 
 
 ///////////////////////////////////////////////////////////////////
-// SIDE MOUNTING BRACKETS
+// PCB MOUNTING POINTS
 //
-
-// mounting bracket width, additional surface width each side for mount
-mountsurfacewidth=10; // [6:0.5:50]
-
-// mounting bracket screw radius
-mountscrewwidth=3;    // [3,4,5,6,7,8]
-
-// create mounting bracket on top side
-mounttop=false; // [false,true]
-
-// create mounting bracket on bottom side
-mountbottom=false; // [false,true]
-
-// create mounting bracket on left side
-mountleft=true; // [false,true]
-
-// create mounting bracket on right side
-mountright=true; // [false,true]
 
 // number of circuit board mount points
 mountpoints=4; // [4,5,6]
@@ -101,20 +83,6 @@ mountpointarray=[ [15,2.5],
                   [66,46],
                   [14,51]
                   ];
-
-
-///////////////////////////////////////////////////////////////////
-// TOP COVER DETAILS
-//
-// set height of top cover bracket
-topcoverbracketheight=materialthickness*3;
-
-// set height of top cover bracket
-topcoverbracketwidth=mountsurfacewidth;
-
-// cover bracket 0=complete, 1=corners only
-topcoverbracketstyle=1;
-
 
 ///////////////////////////////////////////////////////////////////
 // SIDE MOUNTING BRACKETS
