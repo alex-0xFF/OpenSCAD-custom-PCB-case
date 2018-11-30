@@ -3,10 +3,10 @@
 //
 
 // select what to draw: 0=case, 1=cover
-selectdraw=0;   
+select_draw=0;   
 
 // general case material thickness(mm)
-materialthickness=2;    // [2:5]
+material_thickness=2;    // [2:5]
 
 
 ///////////////////////////////////////////////////////////////////
@@ -24,16 +24,16 @@ board_h=13; // [10:0.5:100]  only arduino board
 //board_h=41; // [10:0.5:100]  arduino board + proto screw shield + lcd 16x2 shield
 
 // circuitboard case space/padding distance left
-boardspace_left=10; // [1:0.5:50]     
+board_space_left=10; // [1:0.5:50]     
 
 // circuitboard case space/padding distance right
-boardspace_right=10; // [1:0.5:50]         
+board_space_right=10; // [1:0.5:50]         
 
 // circuitboard case space/padding distance top
-boardspace_top=10; // [1:0.5:50]           
+board_space_top=10; // [1:0.5:50]           
 
 // circuitboard case space/padding distance bottom
-boardspace_bottom=10; // [1:0.5:50]        
+board_space_bottom=10; // [1:0.5:50]        
 
 // circuitboard mount/space height
 board_height=5; // [3:1:20]     
@@ -68,17 +68,17 @@ case_h=0;
 mount_lb=5; // [3:0.5:6]
 
 // circuitboard mounting screw hole size in radius mm
-mount_holeradius=1.5; 
+mount_hole_radius=1.5; 
 
 ///////////////////////////////////////////////////////////////////
 // PCB MOUNTING POINTS
 //
 
 // number of circuit board mount points
-mountpoints=4; // [4,5,6]
+mount_points=4; // [4,5,6]
 
 // circuit board mount points, [ [x,y], [x,y], [x,y], [x,y] ]
-mountpointarray=[ [15,2.5],
+mount_points_array=[ [15,2.5],
                   [66,18],
                   [66,46],
                   [14,51]
@@ -88,34 +88,34 @@ mountpointarray=[ [15,2.5],
 // SIDE MOUNTING BRACKETS
 //
 // mounting bracket width, additional surface width each side for mount
-mountsurfacewidth=10; // [6:0.5:50]
+mount_surface_width=10; // [6:0.5:50]
 
 // mounting bracket screw radius
-mountscrewwidth=3;    // [3,4,5,6,7,8]
+mount_screw_width=3;    // [3,4,5,6,7,8]
 
 // create mounting bracket on top side
-mounttop=false; // [false,true]
+mount_top=false; // [false,true]
 
 // create mounting bracket on bottom side
-mountbottom=false; // [false,true]
+mount_bottom=false; // [false,true]
 
 // create mounting bracket on left side
-mountleft=true; // [false,true]
+mount_left=true; // [false,true]
 
 // create mounting bracket on right side
-mountright=true; // [false,true]
+mount_right=true; // [false,true]
 
 ///////////////////////////////////////////////////////////////////
 // TOP COVER DETAILS
 //
 // set height of top cover bracket
-topcoverbracketheight=materialthickness*3;
+top_cover_bracket_height=material_thickness*3;
 
 // set height of top cover bracket
-topcoverbracketwidth=mountsurfacewidth;
+top_cover_bracket_width=mount_surface_width;
 
 // cover bracket 0=complete, 1=corners only
-topcoverbracketstyle=1;
+top_cover_bracket_style=1;
 
 // see module drawtopcoverholes() below to apply custom cover details
 

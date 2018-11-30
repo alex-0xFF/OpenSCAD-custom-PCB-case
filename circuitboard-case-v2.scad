@@ -14,7 +14,7 @@ module drawmount(x,y,z)
                 center=false);
         
         translate([x,y,-board_height])
-            cylinder(h=board_height,r1=mount_holeradius,r2=mount_holeradius,$fn=10);
+            cylinder(h=board_height,r1=mount_hole_radius,r2=mount_hole_radius,$fn=10);
     }
 
 }
@@ -24,98 +24,98 @@ module drawmount(x,y,z)
 //
 module genericcase()
 {
-    x2=max(board_l+(boardspace_left+boardspace_right)+(materialthickness*2),case_l);
-    y2=max(board_b+(boardspace_top+boardspace_bottom)+(materialthickness*2),case_b);
-    z2=max(board_h+(boardspace_bottom*2)+(materialthickness*2),case_h);
+    x2=max(board_l+(board_space_left+board_space_right)+(material_thickness*2),case_l);
+    y2=max(board_b+(board_space_top+board_space_bottom)+(material_thickness*2),case_b);
+    z2=max(board_h+(board_space_bottom*2)+(material_thickness*2),case_h);
 
-    xa=mountsurfacewidth;
-    xb=x2-(mountsurfacewidth+materialthickness);
-    ya=mountsurfacewidth;
-    yb=y2-(mountsurfacewidth+materialthickness);
+    xa=mount_surface_width;
+    xb=x2-(mount_surface_width+material_thickness);
+    ya=mount_surface_width;
+    yb=y2-(mount_surface_width+material_thickness);
     
     difference()
     {
-        translate([-(materialthickness+boardspace_left),-(materialthickness+boardspace_bottom),-(materialthickness+board_height)])
+        translate([-(material_thickness+board_space_left),-(material_thickness+board_space_bottom),-(material_thickness+board_height)])
             cube([  x2,
                     y2,
                     z2
                 ],center=false);
     
     // case space is now at 0,0,0
-        translate([-boardspace_left,-boardspace_bottom,-board_height])
-            cube([x2-(materialthickness*2),y2-(materialthickness*2),z2+materialthickness+(boardspace_bottom*2)],center=false);
+        translate([-board_space_left,-board_space_bottom,-board_height])
+            cube([x2-(material_thickness*2),y2-(material_thickness*2),z2+material_thickness+(board_space_bottom*2)],center=false);
     }
     
     //color([0,0,1])
-    //    translate([0,0,-boardspace_bottom])
-    //        cube([board_l,board_b,materialthickness]);
+    //    translate([0,0,-board_space_bottom])
+    //        cube([board_l,board_b,material_thickness]);
     
-    for(i = [0 : mountpoints-1]) // for each mountpoint
+    for(i = [0 : mount_points-1]) // for each mountpoint
     {   
-        drawmount(mountpointarray[i][0], mountpointarray[i][1],-board_height);
+        drawmount(mount_points_array[i][0], mount_points_array[i][1],-board_height);
     }
     
     // case mounts
-    if (mounttop) 
+    if (mount_top) 
     {
-        translate([-(materialthickness+boardspace_left),y2-(materialthickness+boardspace_bottom),-(materialthickness+board_height)])
+        translate([-(material_thickness+board_space_left),y2-(material_thickness+board_space_bottom),-(material_thickness+board_height)])
             difference()
             {
-                cube([x2,mountsurfacewidth,materialthickness],center=false);
+                cube([x2,mount_surface_width,material_thickness],center=false);
                 
-                translate([xa,mountsurfacewidth*0.25,0])
-                    cube([mountscrewwidth,mountsurfacewidth*0.75,materialthickness],center=false);
+                translate([xa,mount_surface_width*0.25,0])
+                    cube([mount_screw_width,mount_surface_width*0.75,material_thickness],center=false);
                 
-                translate([xb,mountsurfacewidth*0.25,0])
-                    cube([mountscrewwidth,mountsurfacewidth*0.75,materialthickness],center=false);
+                translate([xb,mount_surface_width*0.25,0])
+                    cube([mount_screw_width,mount_surface_width*0.75,material_thickness],center=false);
             }
     }
     
-    if (mountbottom) 
+    if (mount_bottom) 
     {
-        translate([-(materialthickness+boardspace_left),-(mountsurfacewidth+boardspace_bottom+materialthickness),-(materialthickness+board_height)])
+        translate([-(material_thickness+board_space_left),-(mount_surface_width+board_space_bottom+material_thickness),-(material_thickness+board_height)])
             difference()
             {
-                cube([x2,mountsurfacewidth+1,materialthickness],center=false);
+                cube([x2,mount_surface_width+1,material_thickness],center=false);
                 
                 translate([xa,0,0])
-                    cube([mountscrewwidth,mountsurfacewidth*0.75,materialthickness],center=false);
+                    cube([mount_screw_width,mount_surface_width*0.75,material_thickness],center=false);
                 
                 translate([xb,0,0])
-                    cube([mountscrewwidth,mountsurfacewidth*0.75,materialthickness],center=false);
+                    cube([mount_screw_width,mount_surface_width*0.75,material_thickness],center=false);
             }
     }
     
     // case mounts
-    if (mountleft) 
+    if (mount_left) 
     {
-        translate([-(mountsurfacewidth+boardspace_left+materialthickness),-(boardspace_bottom+materialthickness),-(materialthickness+board_height)])
+        translate([-(mount_surface_width+board_space_left+material_thickness),-(board_space_bottom+material_thickness),-(material_thickness+board_height)])
             difference()
             {
-                cube([mountsurfacewidth,y2,materialthickness],center=false);
+                cube([mount_surface_width,y2,material_thickness],center=false);
                 
                 translate([0,ya,0])
-                    cube([mountsurfacewidth*0.75,mountscrewwidth,materialthickness],center=false);
+                    cube([mount_surface_width*0.75,mount_screw_width,material_thickness],center=false);
                 
                 translate([0,yb,0])
-                    cube([mountsurfacewidth*0.75,mountscrewwidth,materialthickness],center=false);
+                    cube([mount_surface_width*0.75,mount_screw_width,material_thickness],center=false);
                 
                 
             }
     }
     
-    if (mountright) 
+    if (mount_right) 
     {
-        translate([x2-(boardspace_left+materialthickness),-(boardspace_bottom+materialthickness),-(materialthickness+board_height)])
+        translate([x2-(board_space_left+material_thickness),-(board_space_bottom+material_thickness),-(material_thickness+board_height)])
             difference()
             {
-                cube([mountsurfacewidth,y2,materialthickness],center=false);
+                cube([mount_surface_width,y2,material_thickness],center=false);
                 
-                translate([(mountsurfacewidth*0.25),ya,0])
-                    cube([mountsurfacewidth*0.75,mountscrewwidth,materialthickness],center=false);
+                translate([(mount_surface_width*0.25),ya,0])
+                    cube([mount_surface_width*0.75,mount_screw_width,material_thickness],center=false);
                 
-                translate([(mountsurfacewidth*0.25),yb,0])
-                    cube([mountsurfacewidth*0.75,mountscrewwidth,materialthickness],center=false);
+                translate([(mount_surface_width*0.25),yb,0])
+                    cube([mount_surface_width*0.75,mount_screw_width,material_thickness],center=false);
                 
                 
             }
@@ -128,9 +128,9 @@ module genericcase()
 //
 module drawcase()
 {   
-    x2=max(board_l+(boardspace_left+boardspace_right)+(materialthickness*2),case_l)-(boardspace_left+(materialthickness*2));
-    y2=max(board_b+(boardspace_top+boardspace_bottom)+(materialthickness*2),case_b)-(boardspace_bottom+(materialthickness*2));
-    z2=max(board_h+(boardspace_bottom+boardspace_top)+(materialthickness*2),case_h);
+    x2=max(board_l+(board_space_left+board_space_right)+(material_thickness*2),case_l)-(board_space_left+(material_thickness*2));
+    y2=max(board_b+(board_space_top+board_space_bottom)+(material_thickness*2),case_b)-(board_space_bottom+(material_thickness*2));
+    z2=max(board_h+(board_space_bottom+board_space_top)+(material_thickness*2),case_h);
 
     difference()
     {
@@ -139,25 +139,25 @@ module drawcase()
         if (case_open_top)
         {
             translate([0,y2,0])
-                cube([board_l,materialthickness,z2]);
+                cube([board_l,material_thickness,z2]);
         }
         
         if (case_open_bottom)
         {
-            translate([0,-boardspace_bottom-materialthickness,0])
-                cube([board_l,materialthickness,z2]);
+            translate([0,-board_space_bottom-material_thickness,0])
+                cube([board_l,material_thickness,z2]);
         }
         
         if (case_open_left)
         {
-            translate([-boardspace_left-materialthickness,0,0])
-                cube([materialthickness,board_b,z2]);
+            translate([-board_space_left-material_thickness,0,0])
+                cube([material_thickness,board_b,z2]);
         }
         
         if (case_open_right)
         {
             translate([x2,0,0])
-                cube([materialthickness,board_b,z2]);
+                cube([material_thickness,board_b,z2]);
         }
         
     }
@@ -169,29 +169,29 @@ module drawcase()
 //
 module drawtopcover()
 {
-    x2=max(board_l+(boardspace_left+boardspace_right)+(materialthickness*2),case_l);
-    y2=max(board_b+(boardspace_top+boardspace_bottom)+(materialthickness*2),case_b);
+    x2=max(board_l+(board_space_left+board_space_right)+(material_thickness*2),case_l);
+    y2=max(board_b+(board_space_top+board_space_bottom)+(material_thickness*2),case_b);
     
-    cube([x2,y2,materialthickness]);
+    cube([x2,y2,material_thickness]);
     
     difference()
     {
-        translate([materialthickness,materialthickness,materialthickness])
-            cube([x2-(materialthickness*2),y2-(materialthickness*2),topcoverbracketheight]);
+        translate([material_thickness,material_thickness,material_thickness])
+            cube([x2-(material_thickness*2),y2-(material_thickness*2),top_cover_bracket_height]);
         
-        translate([materialthickness*2,materialthickness*2,materialthickness])
-            cube([x2-(materialthickness*4),y2-(materialthickness*4),topcoverbracketheight]);
+        translate([material_thickness*2,material_thickness*2,material_thickness])
+            cube([x2-(material_thickness*4),y2-(material_thickness*4),top_cover_bracket_height]);
         
-//        translate([materialthickness+coverbracketwidth,materialthickness,materialthickness])
-  //          cube([x2-((materialthickness*4)+(coverbracketwidth*2)),y2,coverbracketheight]);
+//        translate([material_thickness+coverbracketwidth,material_thickness,material_thickness])
+  //          cube([x2-((material_thickness*4)+(coverbracketwidth*2)),y2,coverbracketheight]);
         
         if (coverbracketstyle==1) // corner only style
         {
-            translate([materialthickness+coverbracketwidth,materialthickness,materialthickness])
-                cube([x2-((materialthickness*2)+(topcoverbracketwidth*2)),y2,topcoverbracketheight]);
+            translate([material_thickness+coverbracketwidth,material_thickness,material_thickness])
+                cube([x2-((material_thickness*2)+(top_cover_bracket_width*2)),y2,top_cover_bracket_height]);
         
-            translate([materialthickness,materialthickness+coverbracketwidth,materialthickness])
-                cube([x2,y2-((materialthickness*2)+(topcoverbracketwidth*2)),topcoverbracketheight]);
+            translate([material_thickness,material_thickness+coverbracketwidth,material_thickness])
+                cube([x2,y2-((material_thickness*2)+(top_cover_bracket_width*2)),top_cover_bracket_height]);
         }
     }
 }
@@ -203,11 +203,11 @@ module drawtopcover()
 ///////////////////////////////////////////////////////////////////
 // DRAW-BEGIN
 //
-if (selectdraw==0) 
+if (select_draw==0) 
 {
     drawcase();
 }
-else if (selectdraw==1)
+else if (select_draw==1)
 {   
     difference()
     {
