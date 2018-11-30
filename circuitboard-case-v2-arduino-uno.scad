@@ -1,34 +1,6 @@
 ///////////////////////////////////////////////////////////////////
 // CIRCUIT BOARD CASING - CONFIGURATION FILE
 //
-// 
-// Arduino Uno casing
-// idea&design by: P.Eradus, 13-11-2015, p.eradus@64kb.nl
-// 
-//
-// History:
-// 2015-11-21: Restructure code, separate configuration from draw code
-// 2015-11-20: Code review, cleanup, organise, draw cover option
-// 2015-11-14: Initial design & code
-//
-// HOW TO USE?
-// #1 DOWNLOAD circuitboard-case-v2.scad
-// #2 DOWNLOAD circuitboard-case-<of your choice>.scad 
-//
-// CUSTOMIZE AND OR GENERATE your STL file with OPENSCAD FROM FILE #2
-// AND PRINT :-)
-//
-// NOTE: 
-// - adjust at least the height of the case to suit your needs,
-//   as the arduino board can carry additional shields that will
-//   increase your needed height!
-// - put appropiate additional spacing around board if larger shield
-//   is used!
-//   
-//
-///////////////////////////////////////////////////////////////////
-// CONFIG-BEGIN
-//
 
 // select what to draw: 0=case, 1=cover
 selectdraw=0;   

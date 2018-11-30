@@ -1,15 +1,4 @@
-///////////////////////////////////////////////////////////////////
-// CIRCUIT BOARD CASING
-// universal circuit board casing, mountable and flexible design
-
-// idea&design by: P.Eradus, 13-11-2015, p.eradus@64kb.nl
-// 
 //
-// History:
-// 2015-11-20: Code review, cleanup, organise, draw cover option
-// 2015-11-14: Initial design & code
-//
-// SELECT A CIRCUIT BOARD CASE AND THIS FILE WILL BE INCLUDED
 // THIS FILE DOES NOT RUN STANDALONE
 //
 
